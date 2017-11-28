@@ -119,9 +119,10 @@ nltk_data]    | Downloading package mwa_ppdb to
 
    [tfidf]
    max_features=3000
+   lemmatize_first="True"
 </pre>
 </block>
-
+  Note: See Sentiment Analysis algorithm section for "lemmatize_First" parameter
 
 
 ## Usage:
@@ -324,6 +325,8 @@ nltk.stem.WordNetLemmatizer().lemmatize('loving', 'v')
 'love'
 </pre>
 </block>
+
+Note: Edit sent_mend.conf to and set "Lemmatize_first" to "True" if you want to lemmatize terms before taking pos-tags.
 
 **Fourth**, we rely on 'nltk.corpus.sentiwordnet' module to get the sentiment weight against the given term and pos-tag:
 
