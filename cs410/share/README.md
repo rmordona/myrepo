@@ -418,6 +418,8 @@ Positive
 
 * This utility does not utilize DB, cache, or indexing given the small sample dataset used. However, utility can be enhanced to utilize REDIS or other IN-MEMORY DBs for faster access.
 
+* There are other ways to improve the analsys: collocation, intensity, etc. which at this current stage are not included in this utility.
+
 ## licensing:
 
 This project is released under the terms of the MIT Open Source License. View LICENSE.txt for more information.
