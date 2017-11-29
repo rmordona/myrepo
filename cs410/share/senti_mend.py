@@ -15,7 +15,10 @@ from nltk.tokenize import sent_tokenize, word_tokenize
 from nltk.corpus import stopwords #nltk.download('stopwords')
 from nltk import pos_tag # nltk.download('averaged_perceptron_tagger') 
 from nltk.corpus import sentiwordnet as swn #nltk.download('sentiwordnet')
+from nltk.collocations import BigramAssocMeasures, TrigramAssocMeasures, BigramCollocationFinder
 from sklearn.feature_extraction.text import TfidfVectorizer, ENGLISH_STOP_WORDS
+from nltk.sentiment.vader import SentimentIntensityAnalyzer
+
 #from nltk.metrics import precision,recall
 
 import os
@@ -58,6 +61,7 @@ book_dataset = toml_content['dataset']['book']
 rating_dataset = toml_content['dataset']['rating']
 mask_rating_dataset = toml_content['dataset']['mask_rating']
 lemmatize_first = toml_content['lemma_pos']['lemmatize_first'] == "True"
+sentiment_algo = toml_content['sentiment']['algo']
 
 
 book_df = pd.read_csv(book_dataset, delimiter="~", 
@@ -196,7 +200,7 @@ def sentiment_weight(tokens_pos):
     logging.debug("Weights:  Positive Feedbacks: {} Negative Feedbacks: {} Positive Weight: {} Negative Weight: {}".format(  pos_senti, neg_senti, positive, negative ))
     return positive
     
-def sentimentize(doc):
+def sentiment_swn(doc):
     
     operators = set(['not','down'])
     stopwords = set(ENGLISH_STOP_WORDS) - operators
@@ -251,6 +255,24 @@ def sentimentize(doc):
       logging.debug("Error in sentiment ...")
     return weight
 
+def sentiment_vader(doc):
+
+    senti_intense = SentimentIntensityAnalyzer()
+    senti_score = senti_intense.polarity_scores(doc[0])
+    logging.debug("Senti Vader: {}".format(senti_score))
+    pos = senti_score['pos']
+    neg = senti_score['neg']
+    if (pos + neg ) == 0:
+         return 2.5  # neutral
+    else:
+         return  pos / ( pos + neg )
+
+def sentimentize(doc):
+    if sentiment_algo == "swn":
+       return sentiment_swn( doc )
+    elif sentiment_algo == "vader":
+       return sentiment_vader( doc )
+
 
 def normalize_to_rating(value, max):
     return np.round( value * max )
@@ -279,7 +301,7 @@ def rank_titles(other_titles, tit_indexes):
                     neg = neg + 1
         if pos + neg > 0:
             score = pos / ( pos + neg)
-        rank.append( { "title" : other_titles.index[t], "score": score, "positives": pos } )
+        rank.append( { "title" : other_titles.index[t], "score": round(score, 2), "positives": pos } )
     #sorted_rank = sorted(rank, key=lambda d: d['score'], reverse=True)
     return rank
         
@@ -340,7 +362,7 @@ def recommend(title):
        	   logging.debug("------")
            logging.debug("Review {} {} {}".format("[", row.Review.encode('utf-8'),"]"))
            senti_score = sentimentize([row.Review.encode('utf-8')])
-           matrix.at[row.User,row.Title] = average(row.Rating, senti_score)
+           matrix.at[row.User,row.Title] = average(row.Rating, senti_score )
            logging.debug("Result: Rating: {} Senti Score: {} Normalized Senti: {} Final Score: {}".format( row.Rating, senti_score, normalize_to_rating(senti_score, 5), average(row.Rating, senti_score) ) )
 
     	sparsity=round(1.0-len(reviews_df)/float(n_user*n_title),3)
@@ -533,19 +555,21 @@ def evaluate_all():
         #if sentiment == 'NEG': NEG_SENTI = NEG_SENTI + 1
         #if senti_score >= 0.5: POS_SCORE = POS_SCORE + 1
         #if senti_score < 0.5: NEG_SCORE = NEG_SCORE + 1
-    print "       ------- SENTIMENT ----------------"
-    print "S            POS         NEG " 
-    print "C POS        {}    |     {}".format(str(TT).rjust(3), str(FT).rjust(3))
-    print "O      ----------------------------------"
-    print "R NEG        {}    |     {}".format(str(TF).rjust(3), str(FF).rjust(3))
-    print "E      ----------------------------------"
+    print "                 S E N T I M E N T  "
+    print ""
+    print "               POS          NEG " 
+    print "S        ----------------------------------"
+    print "C   POS        {}    |     {}".format(str(TT).rjust(3), str(FT).rjust(3))
+    print "O        ----------------------------------"
+    print "R   NEG        {}    |     {}".format(str(TF).rjust(3), str(FF).rjust(3))
+    print "E        ----------------------------------"
     print ""
     P = TT / float( TT + TF )
     R = TT / float( TT + FT )
     F1 = ( 2 * P * R ) / float( P + R )
-    print "Precision: ", round(P,2)
-    print "Recall: ",  round(R,2)
-    print "F1-MEASURE: ", round(F1,2)
+    print "Precision  : ", round(P,2)
+    print "Recall     : ",  round(R,2)
+    print "F1-MEASURE : ", round(F1,2)
     print ""
 
 def debug():
