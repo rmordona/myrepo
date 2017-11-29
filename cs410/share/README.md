@@ -400,10 +400,6 @@ Positive
 
 * POS-tags for words from nltk.stem.wordnet.WordNetLemmatizer may not always match those POS-tags from nltk.corpus.sentiwordnet, e.g. love (n) does not equate to love(v)
 
-* The algorithm does not consider collocation at this moment.
-
-* We will be looking at nltk.sentiment.vader for Sentiment Insensity to see if it boosts polarity
-
 ## licensing:
 
 This project is released under the terms of the MIT Open Source License. View LICENSE.txt for more information.
