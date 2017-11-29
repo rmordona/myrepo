@@ -410,6 +410,8 @@ Evaluating ...
 Positive
 
 
+## Limitation and Challenges
+
 * The sentiment analysis algorithm at the moment does not classify objectivity vs subjectivity and only assumes subjectivity and polarity (positive feedback vs negative feedback). 
 
 * POS-tags for words from nltk.stem.wordnet.WordNetLemmatizer may not always match those POS-tags from nltk.corpus.sentiwordnet, e.g. love (n) does not equate to love(v)
