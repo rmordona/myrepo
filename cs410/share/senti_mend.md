@@ -299,6 +299,22 @@ User review recorded:
 
 The goal is to be able to interprete a comment and determine if it is suggestive of one being a positive feedback, a negative feedback, or neutral.
 
+### Required Dataset:
+
+Senti_Mend utility requires two datasets ( see senti_mend.conf ).
+
+**Book Dataset:**  Dataset.txt
+
+The dataset comes in the form of: &lt;Title>**~**&lt;Author>**~**&lt;Category>**~**&lt;Short Description>
+
+**Review Dataset:** Final_Feedback.txt
+
+The dataset comes in the form of: &lt;Title>**~**&lt;Hashed User>**~**&lt;Rating>**~**&lt;Review>**~**&lt;Published Date>~&lt;Annotated Sentiment>
+    
+The utility reads both datasets (a.l.a CSV file delimited by a tilde (~) ) into a pandas Dataframe for text processing.
+
+The review dataset serves as the training set for the recommender. The recommender algorithm is evaluated based on the annotated sentiment (POS, NEU, NEG ) against the computed sentiment score ( a score above 0.5 renders to a positive feedback, a score of 0.5 receives a neutral feedback, and a score less than 0.5 receives a negative feedback ).  This is used to calculate precision, recall, and F1 for evaluation and comparison with other sentiment analysis algos (e.g. swn vs vader ).
+
 Senti_Mend, in this version, uses two sentiment tools: swn and vader. Edit sent_mend.conf and choose the proper tool by updating 'algo=' parameter, e.g.
 
     [sentiment]
@@ -393,8 +409,6 @@ Evaluating ...
 
 Positive
 
-
-## Limitations and Challenges
 
 * The sentiment analysis algorithm at the moment does not classify objectivity vs subjectivity and only assumes subjectivity and polarity (positive feedback vs negative feedback). 
 
