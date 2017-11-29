@@ -22,6 +22,10 @@ For python installation, visit this site: http://docs.python-guide.org/en/latest
     nltk (3.2.5)
 
       $ pip install nltk
+      
+    twython (3.6.0)
+    
+      $ pip install twython
 
     sklearn-pandas (1.6.0)
 
