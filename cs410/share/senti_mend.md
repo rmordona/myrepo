@@ -120,6 +120,10 @@ nltk_data]    | Downloading package mwa_ppdb to
    [tfidf]
    max_features=3000
    lemmatize_first="True"
+   
+   [sentiment]
+   algo="vader"  # other choices:  vader,swn
+
 </pre>
 </block>
   Note: See Sentiment Analysis algorithm section for "lemmatize_First" parameter
@@ -290,6 +294,13 @@ User review recorded:
 ## Sentiment Analysis Algorithm 
 
 The goal is to be able to interprete a comment and determine if it is suggestive of one being a positive feedback, a negative feedback, or neutral.
+
+Senti_Mend, in this version, uses two sentiment tools: swn and vader. Edit sent_mend.conf and choose the proper tool by updating 'algo=' parameter, e.g.
+
+    [sentiment]
+    algo="swn"
+
+Below shows how the analysis is taken for swn:
 
 **First**, we rely on the following  'sklearn.feature_extraction.text.TfidfVectorizer' module to help with the following functionalities:
 
