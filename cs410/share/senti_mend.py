@@ -19,6 +19,14 @@ from nltk.collocations import BigramAssocMeasures, TrigramAssocMeasures, BigramC
 from sklearn.feature_extraction.text import TfidfVectorizer, ENGLISH_STOP_WORDS
 from nltk.sentiment.vader import SentimentIntensityAnalyzer
 
+"""
+If you use the VADER sentiment analysis tools, please cite:
+
+Hutto, C.J. & Gilbert, E.E. (2014). VADER: A Parsimonious Rule-based Model for
+Sentiment Analysis of Social Media Text. Eighth International Conference on
+Weblogs and Social Media (ICWSM-14). Ann Arbor, MI, June 2014.
+"""
+
 #from nltk.metrics import precision,recall
 
 import os
