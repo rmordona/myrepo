@@ -9,6 +9,8 @@ Senti_Mend requires python installation - if possible - on linux environment; al
 
 For python installation, visit this site: http://docs.python-guide.org/en/latest/starting/installation/
 
+For pip installation, visit this site: https://pip.pypa.io/en/stable/installing/
+
 ### Required python packages:
 
 **1. Make sure to install the following required python-based packages:**
