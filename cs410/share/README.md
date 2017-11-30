@@ -46,6 +46,10 @@ For pip installation, visit this site: https://pip.pypa.io/en/stable/installing/
       $ pip install pandas-datareader
 
     numpy (1.13.3)
+    
+      $ pip install numpy
+    
+    scipy (1.0.0)
 
       $ pip install scipy
    
@@ -60,31 +64,13 @@ For pip installation, visit this site: https://pip.pypa.io/en/stable/installing/
 </block>
       
 
-**2. For NLTK, there are extra downloads required. Cut and paste the following code into a file: my_nltk.py**
+**2. For NLTK, there are extra downloads required.**
 
-<block>
-<pre>
-------- Start of python script ---
-import nltk
-import ssl 
+   First, download my_nltk.py and execute:   python ./my_nltk.py
+   
+   This will download sentiwordnet lexicon, wordnet lexicon, stopwords, perceptron tagger.
 
-try:
-    _create_unverified_https_context = ssl._create_unverified_context
-except AttributeError:
-    pass
-else:
-    ssl._create_default_https_context = _create_unverified_https_context
-
-nltk.download('all')
-nltk.download('stopwords')
-nltk.download('averaged_perceptron_tagger')
-nltk.download('sentiwordnet')
-nltk.download('wordnet')
-------- End of python script -------
-</pre>
-</block>
-
-**3. Then execute:**
+   Example output:
 
 <block>
 <pre>
