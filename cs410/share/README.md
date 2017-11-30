@@ -229,9 +229,9 @@ Below is a book that has not been rated yet.
 <pre>
 $ ./senti_mend.py -c -t 6
 
-===============================================================
+**===============================================================**
                       RECOMMENDATION
-===============================================================
+**===============================================================**
 
 The sparsity level of Book Reviews is 97.8%
 
@@ -249,9 +249,9 @@ Here is an example of a book with recommendation:
 <pre>
 $ ./senti_mend.py -c -t 244
 
-===============================================================
+**===============================================================**
                       RECOMMENDATION
-===============================================================
+**===============================================================**
 
 The sparsity level of Book Reviews is 97.8%
 
@@ -313,7 +313,7 @@ The dataset comes in the form of: &lt;Title>**~**&lt;Hashed User>**~**&lt;Rating
     
 The utility reads both datasets (a.l.a CSV file delimited by a tilde (~) ) into a pandas Dataframe for text processing.
 
-The review dataset serves as the training set for the recommender. The recommender algorithm is evaluated based on the annotated sentiment (POS, NEU, NEG ) against the computed sentiment score ( a score above 0.5 renders to a positive feedback, a score of 0.5 receives a neutral feedback, and a score less than 0.5 receives a negative feedback ).  This is used to calculate precision, recall, and F1 for evaluation and comparison with other sentiment analysis algos (e.g. swn vs vader ).
+The review dataset serves as the training set for the recommender. The recommender algorithm is evaluated based on the annotated sentiment (POS, NEU, NEG ) against the computed sentiment score ( a score above 0.5 renders to a positive feedback, a score of 0.5 receives a neutral feedback, and a score less than 0.5 receives a negative feedback ).  This is used to calculate precision, recall, and F1 for evaluation and comparison with other sentiment analysis algos (e.g. swn vs vader ). The 300+ reviews are carefully validated and annotated with POS, NEUTRAL, and NEGATIVE labels; thus making this a gold standard feedback.
 
 Senti_Mend, in this version, uses two sentiment tools: swn and vader. Edit sent_mend.conf and choose the proper tool by updating 'algo=' parameter, e.g.
 
@@ -418,7 +418,7 @@ Positive
 
 * This utility does not utilize DB, cache, or indexing given the small sample dataset used. However, utility can be enhanced to utilize REDIS or other IN-MEMORY DBs for faster access.
 
-* There are other ways to improve the analsys: collocation, intensity, etc. which at this current stage are not included in this utility.
+* There are other ways to improve the analysis: collocation, intensity, etc. which at this current stage are not included in this utility.
 
 ## licensing:
 
