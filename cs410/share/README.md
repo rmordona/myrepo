@@ -289,9 +289,8 @@ User review recorded:
 </pre>
 </block>
 
-**Sixth**, To rate add a book, use the following command:
+**Sixth**, To  add a book, use the following command:
 
-Here is a book that the user has already rated ...
 
     $ ./senti_mend.py -a -t "This is a good book" -u "IAMAuthor" -n "Everything you want to see"
 
