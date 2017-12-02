@@ -411,7 +411,7 @@ def rate(user,title,rate,feedback):
          exit(1)
        else:
 
-         feed = "{}~{}~{}~{}~Published.".format(mytitle,user,rate,feedback)
+         feed = "{}~{}~{}~{}~Published.~NONE".format(mytitle,user,rate,feedback)
 
          print ""
          print "User review recorded:"
