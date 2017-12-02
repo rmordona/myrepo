@@ -383,7 +383,8 @@ print(senti.obj_score())
 
 **Fifth**, for how we computed for the score, please visit this PPT to understand the scoring, computation of weight,  selection of related books and finally ranking: 
 
-https://github.com/rmordona/myrepo/blob/master/cs410/share/sent_mend.pptx
+https://github.com/rmordona/myrepo/blob/master/cs410/senti_mend/senti_mend.pptx
+
 
 ### Computing for precision, recall, F1
 <block>
