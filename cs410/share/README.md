@@ -133,6 +133,12 @@ nltk_data]    | Downloading package mwa_ppdb to
 	To display book information:
 
 		senti_mend.py -i -t <book title|book id>
+        
+    To add book:
+
+        senti_mend.py -a -t <book title> -u <Author> -k <Math|Science|Bed Time> -n <Description>
+        
+        where [-k] is book category
 
 	To search a book:
 
@@ -256,7 +262,7 @@ positives  score                                   title
 </pre>
 </block>
 
-**Finally**, To rate a book and give a good review, use the following command:
+**Fifth**, To rate a book and give a good review, use the following command:
 
 Here is a book that the user has already rated ...
 
@@ -282,6 +288,19 @@ User review recorded:
          Feedback: good book
 </pre>
 </block>
+
+**Sixth**, To rate add a book, use the following command:
+
+Here is a book that the user has already rated ...
+
+    $ ./senti_mend.py -a -t "This is a good book" -u "IAMAuthor" -n "Everything you want to see"
+
+    User review recorded:
+
+       Book Title: This is a good book
+           Author: IAMAuthor
+         Category: None
+      Description: Everything you want to see
 
 ## Sentiment Analysis Algorithm 
 
@@ -370,7 +389,7 @@ https://github.com/rmordona/myrepo/blob/master/cs410/share/sent_mend.pptx
 ### Computing for precision, recall, F1
 <block>
 <pre>
-$ ./senti_mend.py -a
+$ ./senti_mend.py -e
 
 Precision-Recall analysis  ...
 
@@ -389,13 +408,13 @@ E      ----------------------------------
 
 ### Test a comment
 
-$ ./senti_mend.py -e "i am not happy"
+$ ./senti_mend.py -p "i am not happy"
 
-Evaluating ...
+Evaluating polarity ...
 
 Negative
 
-$ ./senti_mend.py -e "i am happy"
+$ ./senti_mend.py -p "i am happy"
 
 Evaluating ...
 
@@ -411,6 +430,7 @@ Positive
 * This utility does not utilize DB, cache, or indexing given the small sample dataset used. However, utility can be enhanced to utilize REDIS or other IN-MEMORY DBs for faster access.
 
 * There are other ways to improve the analysis: collocation, intensity, etc. which at this current stage are not included in this utility.
+
 
 ## licensing:
 
