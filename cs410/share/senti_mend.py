@@ -462,7 +462,7 @@ def add_book(title,author,category,description):
          book = "{}~{}~{}~{}~Published.~NONE".format(mytitle,author,category,description)
 
          print ""
-         print "User review recorded:"
+         print "New Book Added:"
          print ""
          print "       Book Title: {}".format(mytitle)
          print "           Author: {}".format(author)

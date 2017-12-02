@@ -292,11 +292,11 @@ User review recorded:
 **Sixth**, To  add a book, use the following command:
 
 
-    $ ./senti_mend.py -a -t "This is a good book" -u "IAMAuthor" -n "Everything you want to see"
+    $ ./senti_mend.py -a -t "This is a new  book" -u "IAMAuthor" -n "Everything you want to see"
 
-    User review recorded:
+    New Book Added:
 
-       Book Title: This is a good book
+       Book Title: This is a new book
            Author: IAMAuthor
          Category: None
       Description: Everything you want to see
