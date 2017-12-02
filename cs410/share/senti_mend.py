@@ -411,7 +411,7 @@ def rate(user,title,rate,feedback):
          exit(1)
        else:
 
-         feed = "{}~{}~{}~{}~Published.~NONE".format(mytitle,user,rate,feedback)
+         feed = "{}~{}~{}~{}~Published.".format(mytitle,user,rate,feedback)
 
          print ""
          print "User review recorded:"
@@ -434,6 +434,44 @@ def rate(user,title,rate,feedback):
 
 def list():
      print book_df[['Title','Category']]
+
+def add_book(title,author,category,description):
+
+    if len(title) > 3:
+        mytitle = title
+    else:
+        print ""
+        print "Length of Book Title is less  ..."
+        print ""
+        exit(1)
+
+    already_inlist = book_df[['Title','Author']].isin([mytitle, author ])
+
+    if True in (already_inlist['Title'] & already_inlist['Author']).values:
+
+
+         print ""
+         print ("Book ({}) already added ...".format(mytitle + ' / ' + author))
+         print ""
+         exit(1)
+
+    else:
+
+         if len(category) == 0: category = "None"
+
+         book = "{}~{}~{}~{}~Published.~NONE".format(mytitle,author,category,description)
+
+         print ""
+         print "User review recorded:"
+         print ""
+         print "       Book Title: {}".format(mytitle)
+         print "           Author: {}".format(author)
+         print "         Category: {}".format(category)
+         print "      Description: {}".format(description)
+         print ""
+         with open(book_dataset, "a") as myfile:
+             myfile.write(book + "\n")
+
 
 def info(title):
 
@@ -526,7 +564,7 @@ def mask_user():
 
 def evaluate(comment):
     print ""
-    print "Evaluating ..."
+    print "Evaluating polarity ..."
     senti_score = sentimentize([comment])
     print ""
     if senti_score > 0.5:
@@ -596,6 +634,12 @@ def usage():
     print ""
     print "		", basename, "-i -t <book title|book id>"
     print ""
+    print "	To add a book:"
+    print ""
+    print "		", basename, "-a -t <book title> -u <Author> -k <Math|Science|Bed Time> -n <Description>"
+    print ""
+    print "		", "where [-k] is book category"
+    print ""
     print "	To search a book:"
     print ""
     print "		", basename, "-s -t <book title>"
@@ -625,13 +669,17 @@ def main(argv):
     MASK=0
     SEARCH=0
     EVALUATE=0
+    ADD=0
     TITLE=""
     FEEDBACK=""
+    DESCRIPTION=""
     USER=""
     COMMENT=""
+    CATEGORY=""
+    AUTHOR = ""
 
-    options, remainder = getopt.getopt(argv, 'r:f:t:u:e:dlhcimsa',
-	 ['rate=', 'feedback=','title=', 'user=', 'search', 'check', 'help', 'list', 'debug', 'info', 'mask', 'search', 'evaluate' ])
+    options, remainder = getopt.getopt(argv, 'r:f:t:u:p:k:n:adlhcimsea',
+	 ['rate=', 'feedback=','title=', 'user=', 'search', 'check', 'help', 'list', 'debug', 'info', 'mask', 'search', 'evaluate', 'category','description' , 'polarity' ])
 
     for opt, arg in options:
         if opt in ('-r', '--rate'):
@@ -648,15 +696,22 @@ def main(argv):
             SEARCH = 1
         elif opt in ('-u', '--user'):
             USER = Hash(arg)
+            AUTHOR = arg
         elif opt in ('-c', '--check'):
             RECOMMEND = 1
         elif opt in ('-i', '--info'):
             INFO = 1
         elif opt in ('-l', '--list'):
             LIST = 1
-        elif opt in ('-a', '--analyze'):
-            EVALUATE=1
+        elif opt in ('-a', '--add'):
+            ADD=1
+        elif opt in ('-n', '--description'):
+            DESCRIPTION = arg
+        elif opt in ('-k', '--category'):
+            CATEGORY=arg
         elif opt in ('-e', '--evaluate'):
+            EVALUATE=1
+        elif opt in ('-p', '--polarity'):
             COMMENT = arg
         elif opt in ('-m', '--mask'):
             MASK = 1
@@ -678,6 +733,8 @@ def main(argv):
   	search(TITLE)
     elif RECOMMEND == 1:
   	recommend(TITLE)
+    elif ADD == 1:
+  	add_book(TITLE,AUTHOR,CATEGORY,DESCRIPTION)
     elif RATE > 0:
         if len(USER) < 2 or len(FEEDBACK) < 5:
 	   usage()
