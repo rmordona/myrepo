@@ -418,7 +418,7 @@ Negative
 
 $ ./senti_mend.py -p "i am happy"
 
-Evaluating ...
+Evaluating polarity ...
 
 Positive
 
