@@ -3,6 +3,8 @@
 
 A recommender utility that provides recommendation of relevent kid's books based on parent's rating and feedback.
 
+By: Raymond Ordona, Amitesh Shukla, Haibin Huang
+
 ## Installation:
 
 Senti_Mend requires python installation - if possible - on linux environment; although, it should work on other environments (mac, windows) given proper installation.
