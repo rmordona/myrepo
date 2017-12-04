@@ -3,6 +3,8 @@
 
 A recommender utility that provides recommendation of relevent kid's books based on parent's rating and feedback.
 
+By: Raymond Ordona, Amitesh Shukla, Haibin Huang
+
 ## Installation:
 
 Senti_Mend requires python installation - if possible - on linux environment; although, it should work on other environments (mac, windows) given proper installation.
@@ -324,9 +326,11 @@ The review dataset serves as the training set for the recommender. The recommend
 Senti_Mend, in this version, uses two sentiment tools: swn and vader. Edit sent_mend.conf and choose the proper tool by updating 'algo=' parameter, e.g.
 
     [sentiment]
-    algo="swn"
+    algo="vader"
 
-Below shows how the analysis is taken for swn:
+By default, the algorithm is set to "vader".
+
+However, should you try to use "swn",  please see below how we implemented pre-processing (e.g. tokenize, stopwords, bigram, lemmatization, stemming, etc. ) then sentiment weighing.
 
 **First**, we rely on the following  'sklearn.feature_extraction.text.TfidfVectorizer' module to help with the following functionalities:
 
@@ -416,7 +420,7 @@ Negative
 
 $ ./senti_mend.py -p "i am happy"
 
-Evaluating ...
+Evaluating polarity ...
 
 Positive
 
