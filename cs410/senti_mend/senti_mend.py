@@ -30,7 +30,7 @@ Weblogs and Social Media (ICWSM-14). Ann Arbor, MI, June 2014.
 #from nltk.metrics import precision,recall
 
 import os
-import subprocess
+#import subprocess
 import sys
 import getopt
 import logging
@@ -529,7 +529,7 @@ def search(keyword):
         except:
           description = row.Description
 
-        if keyword in title:
+        if keyword.lower() in title.lower():
            FOUND=1
            print "               Id: {}".format(id)
            print "            Title: {}".format(title)
