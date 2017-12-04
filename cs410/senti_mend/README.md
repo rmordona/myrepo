@@ -389,6 +389,7 @@ print(senti.obj_score())
 
 https://github.com/rmordona/myrepo/blob/master/cs410/senti_mend/senti_mend.pptx
 
+Possible PPT version compatibility:  TESTED ON PPT version 2013 and 2016
 
 ### Computing for precision, recall, F1
 <block>
