@@ -107,7 +107,7 @@ nltk_data]    | Downloading package mwa_ppdb to
    [dataset]
    book = "./dataset/Dataset.txt"
    rating = "./dataset/Final_Feedback.txt"
-   #mask_rating = "./dataset/Mask_Final_Feedback.txt"
+   mask_rating = "./dataset/Mask_Final_Feedback.txt"
 
    [tfidf]
    max_features=3000
