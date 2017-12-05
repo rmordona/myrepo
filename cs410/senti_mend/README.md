@@ -99,11 +99,11 @@ nltk_data]    | Downloading package mwa_ppdb to
 
 **Note:** Running nltk.download('all') may require close to 4GB of disk space.
 
-**4. Download senti_mend.py and senti_mend.conf**
+**3. Download senti_mend.py and senti_mend.conf**
 
-**5. Download Dataset.txt and Final_Feedback.txt**
+**4. Download Dataset.txt and Final_Feedback.txt**
 
-**6. Edit senti_mend.conf and update the path to the two datasets.**
+**5. Edit senti_mend.conf and update the path to the two datasets.**
 <block>
 <pre>
    [dataset]
