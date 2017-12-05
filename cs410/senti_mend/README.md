@@ -13,6 +13,8 @@ For python installation, visit this site: http://docs.python-guide.org/en/latest
 
 For pip installation, visit this site: https://pip.pypa.io/en/stable/installing/
 
+Note: SENTI_MEND has been developed and tested against Python 2.7
+
 ### Required python packages:
 
 **1. Make sure to install the following required python-based packages:**
