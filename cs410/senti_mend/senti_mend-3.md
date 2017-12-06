@@ -61,7 +61,8 @@ Note: This is not compatible with Python 3.x
 
       os> pip install hashlib
       
-      Note: If you get an error, it is possible that your python version already comes with hashlib by default
+      Note: If you get an error, it is possible that your python version already comes with
+            hashlib by default
       
       Note: Try to run "pip list" and see if hashlib is already installed.
 
@@ -149,7 +150,7 @@ To display book information:
 To add book:
 
     os> python senti_mend.py -a -t "<book title>" -u "<Author>" -k "<Math|Science|Bed Time>" 
-    -n "<Description>"
+        -n "<Description>"
         
     where [-k] is book category
 
@@ -166,15 +167,14 @@ To check for recommended books based on given title:
 To rate a book (simulating click-throughs and feedback):
 
 	os> python senti_mend.py -r <rate between 1 and 5> -t "<book title|book id>" -f "<feedback>" 
-    -u "<user>"
+        -u "<user>"
 
 
 ## Quick Tutorial:
 
 **First**, get a list of available books. To do this, run the following command:
 
-<block>
-<pre>
+
 os> python senti_mend.py -l
                                                                                Title          Category
 0                          Trace Numbers, Ages 3 - 5 (Big Skills for Little Hands)                Math
@@ -192,8 +192,7 @@ os> python senti_mend.py -l
 12         Shapes, Colours and Patterns: Ages 3-5 (Collins Easy Learning Preschool)               Math
 13                     Numbers Workbook: Ages 3-5 (Collins Easy Learning Preschool)               Math
 ...
-</pre>
-</block>
+
 
 **Second**, get book information.  You can get information of a book by providing the book id or the book title. For example, to get book information using book id 6 for book title 'Sequencing & Memory Workbook', you can issue the following command:
 
@@ -202,11 +201,17 @@ os> python senti_mend.py -l
 
 Book Information:
 
-               **Id:** 6
-            **Title:** Sequencing & Memory Workbook
-           **Author:** by Brighter Child (Compiler),
-         **Category:** Math
-      **Description:** Carson-Dellosa Publishing (Compiler) Brighter Child Sequencing & Memory helps young children master thinking skills and concepts. Practice is included for numbers, patterns, classification, critical thinking, and more. School success starts here! Workbooks in the popular Brighter Child series are packed with plenty of fun activities that teach a variety of essential school skills. Students will find help for math, English and grammar, handwriting, and other important subject areas. Each book contains full-color practice pages, easy-to-follow instructions, and an answer key.
+               Id: 6
+            Title: Sequencing & Memory Workbook
+           Author: by Brighter Child (Compiler),
+         Category: Math
+      Description: Carson-Dellosa Publishing (Compiler) Brighter Child Sequencing & Memory 
+      helps young children master thinking skills and concepts. Practice is included for 
+      numbers, patterns, classification, critical thinking, and more. School success starts 
+      here! Workbooks in the popular Brighter Child series are packed with plenty of fun 
+      activities that teach a variety of essential school skills. Students will find help for 
+      math, English and grammar, handwriting, and other important subject areas. Each book 
+      contains full-color practice pages, easy-to-follow instructions, and an answer key.
       
 
 
@@ -220,19 +225,25 @@ or you also can use:
 os> python senti_mend.py -s -t "Seq"
 Book Information:
 
-               **Id:** 6
-            **Title:** Sequencing & Memory Workbook
-           **Author:** by Brighter Child (Compiler),
-         **Category:** Math
-      **Description:** Carson-Dellosa Publishing (Compiler) Brighter Child Sequencing & Memory helps young children master thinking skills and concepts. Practice is included for numbers, patterns, classification, critical thinking, and more. School success starts here! Workbooks in the popular Brighter Child series are packed with plenty of fun activities that teach a variety of essential school skills. Students will find help for math, English and grammar, handwriting, and other important subject areas. Each book contains full-color practice pages, easy-to-follow instructions, and an answer key.
+               Id: 6
+            Title: Sequencing & Memory Workbook
+           Author: by Brighter Child (Compiler),
+         Category: Math
+      Description: Carson-Dellosa Publishing (Compiler) Brighter Child Sequencing & 
+      Memory helps young children master thinking skills and concepts. Practice is included 
+      for numbers, patterns, classification, critical thinking, and more. School success 
+      starts here! Workbooks in the popular Brighter Child series are packed with plenty 
+      of fun activities that teach a variety of essential school skills. Students will 
+      find help for math, English and grammar, handwriting, and other important subject 
+      areas. Each book contains full-color practice pages, easy-to-follow instructions, 
+      and an answer key.
 
 
 **Fourth**, check if a book title has already been rated.  If a book is rated, a list of recommended books may also be available.  To get recommendation for all other books, use the following command:
 
 Below is a book that has not been rated yet.
 
-<block>
-<pre>
+
 os> python senti_mend.py -c -t 6
 
 **===============================================================**
@@ -245,14 +256,13 @@ Title:  Sequencing & Memory Workbook
 
 Book has not been rated yet ... No relevant titles to recommend
 
-To rate book:  senti_mend.py -r &lt;rate between 1 and 5&gt; -t "&lt;book title|book id&gt;" -f "&lt;feedback&gt;" -u "&lt;user&gt;"
-</pre>
-</block>
+To rate book:  python senti_mend.py -r &lt;rate between 1 and 5&gt; -t "&lt;book title|book id&gt;"
+               -f "&lt;feedback&gt;" -u "&lt;user&gt;"
+
 
 Here is an example of a book with recommendation:
 
-<block>
-<pre>
+
 os> python senti_mend.py -c -t 244
 
 **===============================================================**
@@ -272,9 +282,11 @@ positives  score                                   title
       2.0  1.000  Sensational Seasons: Reproducible Fall
       7.0  0.875                       Same or Different
       
-**Note:** Since this is a collaborative-filter (CF) based system, recommendations are based on user feedback and rating. The next commands will show how to rate other books.  Example, If Parent A rates Book A and Book B and parent B is 'checking' for Book A, the system will recommend Book A and Book B.
-</pre>
-</block>
+**Note:** Since this is a collaborative-filter (CF) based system, recommendations are 
+based on user feedback and rating. The next commands will show how to rate other books.  
+Example, If Parent A rates Book A and Book B and parent B is 'checking' for Book A, the 
+system will recommend Book A and Book B.
+
 
 **Fifth**, To rate a book and give a good review, use the following command:
 
