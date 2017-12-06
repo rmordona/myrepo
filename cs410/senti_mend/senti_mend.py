@@ -319,8 +319,14 @@ def recommend_books(title, matrix):
     # get list of reviewers of title
     try:
       reviewers = matrix.T.loc[title]
+      print "Note: The following books received positive score and positive feedback from parents"
+      print "      who also read the book ({})".format(title)
+      print ""
     except KeyError:
       print "Book has not been rated yet ... No relevant titles to recommend"
+      print ""
+      print "Note: This tool uses Collaborative-Filter (CF) technique and is not Content-Based; and"
+      print "      therefore, it does not correlate profiles or authors or categories at the moment" 
       print ""
       print "To rate book: ", basename, "-r <rate between 1 and 5> -t \"<book title|book id>\" -f \"<feedback>\" -u \"<user>\""
       print ""
@@ -384,9 +390,9 @@ def recommend(title):
         print ""
         print "Title: ", title
         print ""
-        print "Note: The following books received positive score and positive feedback from parents"
-        print "      who also read the book ({})".format(title)
-        print ""
+        #print "Note: The following books received positive score and positive feedback from parents"
+        #print "      who also read the book ({})".format(title)
+        #print ""
         recommended = recommend_books(title, matrix)
         print recommended.to_string(index=False)
 
@@ -459,7 +465,7 @@ def add_book(title,author,category,description):
 
          if len(category) == 0: category = "None"
 
-         book = "{}~{}~{}~{}~Published.~NONE".format(mytitle,author,category,description)
+         book = "{}~{}~{}~{}~Published.".format(mytitle,author,category,description)
 
          print ""
          print "New Book Added:"
@@ -479,11 +485,11 @@ def info(title):
 
     titles = (title for title in book_df.Title.unique())
 
-    if mytitle in titles:
+    if mytitle.strip() in titles:
 
-      book_info = book_df.loc[book_df['Title'] == mytitle ]
+      book_info = book_df.loc[book_df['Title'] == mytitle.strip() ]
       print ""
-      print "Book Information:"
+      print "Book Information:", mytitle
       print ""
       print "               Id: {}".format(book_info.index[0])
       print "            Title: {}".format(book_info['Title'].iloc[0])
@@ -494,7 +500,7 @@ def info(title):
 
     else:
       print ""
-      print "No title exists in our list ..."
+      print "No title exists in our list ... Title is case sensitive"
       print ""
       print "Please use the following command to get list of titles: ", basename, "-l"
       print ""
@@ -632,21 +638,21 @@ def usage():
     print ""
     print "	To display book information:"
     print ""
-    print "		", basename, "-i -t <book title|book id>"
+    print "		", basename, "-i -t \"<book title|book id>\""
     print ""
     print "	To add a book:"
     print ""
-    print "		", basename, "-a -t <book title> -u <Author> -k <Math|Science|Bed Time> -n <Description>"
+    print "		", basename, "-a -t \"<book title>\" -u \"<Author>\" -k \"<Math|Science|Bed Time>\" -n \"<Description>\""
     print ""
     print "		", "where [-k] is book category"
     print ""
     print "	To search a book:"
     print ""
-    print "		", basename, "-s -t <book title>"
+    print "		", basename, "-s -t \"<book title>\""
     print ""
     print "	To check for recommended books based on given title:"
     print ""
-    print "		", basename, "-c -t <book title|book id> [-d]"
+    print "		", basename, "-c -t \"<book title|book id>\" [-d]"
     print ""
     print "		", "where [-d] is in debug mode"
     print ""

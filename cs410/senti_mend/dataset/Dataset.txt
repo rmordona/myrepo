@@ -296,7 +296,7 @@ Brain Quest Workbook: Pre-K~Liane Onish~Bed Time Stories~Jam-packed with hundred
 Does It Belong?~Barbara Gregorich, Joan Hoffman, Richard Pape~Bed Time Stories~Recognizing likenesses and differences will prepare your child for reading and solving math problems. Help your child develop this valuable skill in Does It Belong?, one of School Zone's colorfully illustrated preschool workbooks.
 Same or Different~Barbara Gregorich, Joan Hoffman, Richard Pape~Bed Time Stories~To compare and contrast the items in these exercises, your child must look for significant details--a critical reading readiness skill. Funny, full-color illustrations, predictable formats, and easy-to-follow directions ensure engagement and success.
 Beginning Sounds~Barbara Gregorich, Joan Hoffman, Richard Pape~Bed Time Stories~This workbook helps children recognize the sounds of letters that begin words, an essential early reading skill. Amusing, full-color illustrations and a variety of easy-to-follow exercises make learning simple and fun.
-i am happy~d18608bd5df968~None~Description~Published.~NONE
-i am happy~MeToo~None~Description~Published.~NONE
-i am happy~MeToox~None~Description~Published.~NONE
-This is a good book~IAMAuthor~None~Everything you want to see~Published.~NONE
+i am happy~d18608bd5df968~None~Description~Published.
+i am happy~MeToo~None~Description~Published.
+i am happy~MeToox~None~Description~Published.
+This is a good book~IAMAuthor~None~Everything you want to see~Published.
