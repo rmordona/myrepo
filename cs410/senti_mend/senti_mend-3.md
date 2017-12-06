@@ -138,8 +138,7 @@ nltk_data]    | Downloading package mwa_ppdb to
 
 ## Usage:
 
-<block>
-   <pre>
+
 To list books (simulating listing book):
 
 	os> python senti_mend.py -l
@@ -169,8 +168,7 @@ To check for recommended books based on given title:
 To rate a book (simulating click-throughs and feedback):
 
 	os> python senti_mend.py -r &lt;rate between 1 and 5> -t "&lt;book title|book id>" -f "&lt;feedback>" -u "&lt;user>"
-    </pre>
- </block>
+
 
 ## Quick Tutorial:
 
