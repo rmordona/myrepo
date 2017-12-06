@@ -269,14 +269,14 @@ os> python senti_mend.py -c -t 244
  ** =============================================================== **
                       RECOMMENDATION
  ** =============================================================== **
-</pre>
+ 
 The sparsity level of Book Reviews is 97.8%
 
 Title:  Greek Myths for Young Children
 
 **Note:** The following books received positive score and positive feedback from parents
       who also read the book (Greek Myths for Young Children)
-<pre>
+ 
 positives  score                                   title
      18.0  1.000          Greek Myths for Young Children
       7.0  1.000                        Beginning Sounds
