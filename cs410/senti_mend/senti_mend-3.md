@@ -148,7 +148,8 @@ To display book information:
         
 To add book:
 
-    os> python senti_mend.py -a -t "<book title>" -u "<Author>" -k "<Math|Science|Bed Time>" -n "<Description>"
+    os> python senti_mend.py -a -t "<book title>" -u "<Author>" -k "<Math|Science|Bed Time>" 
+    -n "<Description>"
         
     where [-k] is book category
 
@@ -164,7 +165,8 @@ To check for recommended books based on given title:
 
 To rate a book (simulating click-throughs and feedback):
 
-	os> python senti_mend.py -r <rate between 1 and 5> -t "<book title|book id>" -f "<feedback>" -u "<user>"
+	os> python senti_mend.py -r <rate between 1 and 5> -t "<book title|book id>" -f "<feedback>" 
+    -u "<user>"
 
 
 ## Quick Tutorial:
