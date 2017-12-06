@@ -176,6 +176,7 @@ To rate a book (simulating click-throughs and feedback):
 
 
 os> python senti_mend.py -l
+<pre>
                                                                                Title          Category
 0                          Trace Numbers, Ages 3 - 5 (Big Skills for Little Hands)                Math
 1                                                                           7 Ate 9               Math
@@ -192,12 +193,12 @@ os> python senti_mend.py -l
 12         Shapes, Colours and Patterns: Ages 3-5 (Collins Easy Learning Preschool)               Math
 13                     Numbers Workbook: Ages 3-5 (Collins Easy Learning Preschool)               Math
 ...
-
+</pre>
 
 **Second**, get book information.  You can get information of a book by providing the book id or the book title. For example, to get book information using book id 6 for book title 'Sequencing & Memory Workbook', you can issue the following command:
 
 
- os> python senti_mend.py -i -t 6
+os> python senti_mend.py -i -t 6
 
 Book Information:
 
@@ -243,13 +244,12 @@ Book Information:
 
 Below is a book that has not been rated yet.
 
-
 os> python senti_mend.py -c -t 6
-
-**===============================================================**
+<pre>
+ ** =============================================================== **
                       RECOMMENDATION
-**===============================================================**
-
+ ** =============================================================== **
+</pre>
 The sparsity level of Book Reviews is 97.8%
 
 Title:  Sequencing & Memory Workbook
@@ -265,23 +265,24 @@ Here is an example of a book with recommendation:
 
 os> python senti_mend.py -c -t 244
 
-**===============================================================**
+<pre>
+ ** =============================================================== **
                       RECOMMENDATION
-**===============================================================**
-
+ ** =============================================================== **
+</pre>
 The sparsity level of Book Reviews is 97.8%
 
 Title:  Greek Myths for Young Children
 
 **Note:** The following books received positive score and positive feedback from parents
       who also read the book (Greek Myths for Young Children)
-
+<pre>
 positives  score                                   title
      18.0  1.000          Greek Myths for Young Children
       7.0  1.000                        Beginning Sounds
       2.0  1.000  Sensational Seasons: Reproducible Fall
       7.0  0.875                       Same or Different
-      
+</pre>
 **Note:** Since this is a collaborative-filter (CF) based system, recommendations are 
 based on user feedback and rating. The next commands will show how to rate other books.  
 Example, If Parent A rates Book A and Book B and parent B is 'checking' for Book A, the 
