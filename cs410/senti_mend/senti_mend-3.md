@@ -142,33 +142,33 @@ nltk_data]    | Downloading package mwa_ppdb to
    <pre>
 	To list books (simulating listing book):
 
-		$ python senti_mend.py -l
+		&#36; python senti_mend.py -l
 
-		Note: You can derive the <book id> of a book by running  senti_mend.py -l
+		Note: You can derive the &lt;book id> of a book by running  senti_mend.py -l
 
 	To display book information:
 
-		$ python senti_mend.py -i -t "<book title|book id>"
+		&#36; python senti_mend.py -i -t "&lt;book title|book id>"
         
     To add book:
 
-        $ python senti_mend.py -a -t "<book title>" -u <Author> -k "<Math|Science|Bed Time>" -n "<Description>"
+        &#36; python senti_mend.py -a -t "&lt;book title>" -u &lt;Author> -k "&lt;Math|Science|Bed Time>" -n "&lt;Description>"
         
         where [-k] is book category
 
 	To search a book:
 
-		$ python senti_mend.py -s -t "<book title>"
+		&#36; python senti_mend.py -s -t "&lt;book title>"
 
 	To check for recommended books based on given title:
 
-		$ python senti_mend.py -c -t "<book title|book id>" [-d]
+		&#36; python senti_mend.py -c -t "&lt;book title|book id>" [-d]
 
 		where [-d] is in debug mode
 
 	To rate a book (simulating click-throughs and feedback):
 
-		$ python senti_mend.py -r <rate between 1 and 5> -t "<book title|book id>" -f "<feedback>" -u "<user>"
+		&#36; python senti_mend.py -r &lt;rate between 1 and 5> -t "&lt;book title|book id>" -f "&lt;feedback>" -u "&lt;user>"
     </pre>
  </block>
 
@@ -178,7 +178,7 @@ nltk_data]    | Downloading package mwa_ppdb to
 
 <block>
 <pre>
-$ python senti_mend.py -l
+&#36; python senti_mend.py -l
                                                                                Title          Category
 0                          Trace Numbers, Ages 3 - 5 (Big Skills for Little Hands)                Math
 1                                                                           7 Ate 9               Math
@@ -202,7 +202,7 @@ $ python senti_mend.py -l
 
 <block>
 <pre>
-$ python senti_mend.py -i -t 6
+&#36; python senti_mend.py -i -t 6
 
 Book Information:
 
@@ -211,18 +211,19 @@ Book Information:
            **Author:** by Brighter Child (Compiler),
          **Category:** Math
       **Description:** Carson-Dellosa Publishing (Compiler) Brighter Child Sequencing & Memory helps young children master thinking skills and concepts. Practice is included for numbers, patterns, classification, critical thinking, and more. School success starts here! Workbooks in the popular Brighter Child series are packed with plenty of fun activities that teach a variety of essential school skills. Students will find help for math, English and grammar, handwriting, and other important subject areas. Each book contains full-color practice pages, easy-to-follow instructions, and an answer key.
+      
 </pre>
 </block>
 
 or you also can use:  
 
-    $ python senti_mend.py -i -t "Sequencing & Memory Workbook"
+    &#36; python senti_mend.py -i -t "Sequencing & Memory Workbook"
 
 **Third**, try to search for a book title. Use the below command. Below, we are searching for book titles that matches for the **'Seq'** pattern.
 
 <block>
 <pre>
-$ python senti_mend.py -s -t "Seq"
+&#36; python senti_mend.py -s -t "Seq"
 Book Information:
 
                **Id:** 6
@@ -239,7 +240,7 @@ Below is a book that has not been rated yet.
 
 <block>
 <pre>
-$ python senti_mend.py -c -t 6
+&#36; python senti_mend.py -c -t 6
 
 **===============================================================**
                       RECOMMENDATION
@@ -259,7 +260,7 @@ Here is an example of a book with recommendation:
 
 <block>
 <pre>
-$ python senti_mend.py -c -t 244
+&#36; python senti_mend.py -c -t 244
 
 **===============================================================**
                       RECOMMENDATION
@@ -288,7 +289,7 @@ Here is a book that the user has already rated ...
 
 ##### <block>
 <pre>
-$ python senti_mend.py -r 5 -u "raymond5" -t "Greek Myths for Young Children" -f "good book"
+&#36; python senti_mend.py -r 5 -u "raymond5" -t "Greek Myths for Young Children" -f "good book"
 
 User (d196a91fb80e88) already rated the title (Greek Myths for Young Children)...
 </pre>
@@ -298,7 +299,7 @@ And here is a book that another user has not rated yet ...
 
 <block>
 <pre>
-$ python senti_mend.py -r 5 -u "raymond ordona" -t "Greek Myths for Young Children" -f "good book"
+&#36; python senti_mend.py -r 5 -u "raymond ordona" -t "Greek Myths for Young Children" -f "good book"
 
 User review recorded:
 
@@ -312,7 +313,9 @@ User review recorded:
 **Sixth**, To  add a book, use the following command:
 
 
-    $ python senti_mend.py -a -t "This is a new  book" -u "IAMAuthor" -n "Everything you want to see"
+<block>
+    <pre>
+&#36; python senti_mend.py -a -t "This is a new  book" -u "IAMAuthor" -n "Everything you want to see"
 
     New Book Added:
 
@@ -320,6 +323,8 @@ User review recorded:
            Author: IAMAuthor
          Category: None
       Description: Everything you want to see
+  </pre>
+</block>
 
 ## Sentiment Analysis Algorithm 
 
@@ -412,7 +417,7 @@ Possible PPT version compatibility:  TESTED ON PPT version 2013 and 2016
 ### Computing for precision, recall, F1
 <block>
 <pre>
-$ python senti_mend.py -e
+&#36; python senti_mend.py -e
 
 Precision-Recall analysis  ...
 
@@ -431,13 +436,13 @@ E      ----------------------------------
 
 ### Test a comment
 
-$ python senti_mend.py -p "i am not happy"
+&#36; python senti_mend.py -p "i am not happy"
 
 Evaluating polarity ...
 
 Negative
 
-$ python senti_mend.py -p "i am happy"
+&#36; python senti_mend.py -p "i am happy"
 
 Evaluating polarity ...
 
