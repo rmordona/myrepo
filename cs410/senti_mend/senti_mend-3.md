@@ -23,9 +23,7 @@ Note: This is not compatible with Python 3.x
 
 **1. Make sure to install the following required python-based packages:**
 
-<block>
-<pre>
-
+ 
    
     nltk (3.2.5)
 
@@ -63,15 +61,14 @@ Note: This is not compatible with Python 3.x
 
       os> pip install hashlib
       
-      **Note:** If you get an error, it is possible that your python version already comes with hashlib by default
+      Note: If you get an error, it is possible that your python version already comes with hashlib by default
       
-      **Note:** Try to run "pip list" and see if hashlib is already installed.
+      Note: Try to run "pip list" and see if hashlib is already installed.
 
     toml (0.9.3)
 
       os> pip install toml
-</pre>
-</block>
+ 
       
 
 **2. For NLTK, there are extra downloads required.**
@@ -143,31 +140,31 @@ To list books (simulating listing book):
 
 	os> python senti_mend.py -l
 
-	Note: You can derive the &lt;book id> of a book by running  senti_mend.py -l
+	Note: You can derive the <book id> of a book by running  senti_mend.py -l
 
 To display book information:
 
-	os> python senti_mend.py -i -t "&lt;book title|book id>"
+	os> python senti_mend.py -i -t "<book title|book id>"
         
 To add book:
 
-    os> python senti_mend.py -a -t "&lt;book title>" -u "&lt;Author>" -k "&lt;Math|Science|Bed Time>" -n "&lt;Description>"
+    os> python senti_mend.py -a -t "<book title>" -u "<Author>" -k "<Math|Science|Bed Time>" -n "<Description>"
         
     where [-k] is book category
 
 To search a book:
 
-	os> python senti_mend.py -s -t "&lt;book title>"
+	os> python senti_mend.py -s -t "<book title>"
 
 To check for recommended books based on given title:
 
-	os> python senti_mend.py -c -t "&lt;book title|book id>" [-d]
+	os> python senti_mend.py -c -t "<book title|book id>" [-d]
 
     where [-d] is in debug mode
 
 To rate a book (simulating click-throughs and feedback):
 
-	os> python senti_mend.py -r &lt;rate between 1 and 5> -t "&lt;book title|book id>" -f "&lt;feedback>" -u "&lt;user>"
+	os> python senti_mend.py -r <rate between 1 and 5> -t "<book title|book id>" -f "<feedback>" -u "<user>"
 
 
 ## Quick Tutorial:
@@ -198,8 +195,7 @@ os> python senti_mend.py -l
 
 **Second**, get book information.  You can get information of a book by providing the book id or the book title. For example, to get book information using book id 6 for book title 'Sequencing & Memory Workbook', you can issue the following command:
 
-<block>
-<pre>
+
  os> python senti_mend.py -i -t 6
 
 Book Information:
@@ -210,8 +206,7 @@ Book Information:
          **Category:** Math
       **Description:** Carson-Dellosa Publishing (Compiler) Brighter Child Sequencing & Memory helps young children master thinking skills and concepts. Practice is included for numbers, patterns, classification, critical thinking, and more. School success starts here! Workbooks in the popular Brighter Child series are packed with plenty of fun activities that teach a variety of essential school skills. Students will find help for math, English and grammar, handwriting, and other important subject areas. Each book contains full-color practice pages, easy-to-follow instructions, and an answer key.
       
-</pre>
-</block>
+
 
 or you also can use:  
 
@@ -219,8 +214,7 @@ or you also can use:
 
 **Third**, try to search for a book title. Use the below command. Below, we are searching for book titles that matches for the **'Seq'** pattern.
 
-<block>
-<pre>
+
 os> python senti_mend.py -s -t "Seq"
 Book Information:
 
@@ -229,8 +223,7 @@ Book Information:
            **Author:** by Brighter Child (Compiler),
          **Category:** Math
       **Description:** Carson-Dellosa Publishing (Compiler) Brighter Child Sequencing & Memory helps young children master thinking skills and concepts. Practice is included for numbers, patterns, classification, critical thinking, and more. School success starts here! Workbooks in the popular Brighter Child series are packed with plenty of fun activities that teach a variety of essential school skills. Students will find help for math, English and grammar, handwriting, and other important subject areas. Each book contains full-color practice pages, easy-to-follow instructions, and an answer key.
-</pre>
-</block>    
+
 
 **Fourth**, check if a book title has already been rated.  If a book is rated, a list of recommended books may also be available.  To get recommendation for all other books, use the following command:
 
