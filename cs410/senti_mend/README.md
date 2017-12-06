@@ -23,55 +23,53 @@ Note: This is not compatible with Python 3.x
 
 **1. Make sure to install the following required python-based packages:**
 
-<block>
-<pre>
-
+ 
    
     nltk (3.2.5)
 
-      $ pip install nltk
+      os> pip install nltk
       
     twython (3.6.0)
     
-      $ pip install twython
+      os> pip install twython
 
     sklearn-pandas (1.6.0)
 
-      $ pip install sklearn-pandas
+      os> pip install sklearn-pandas
 
     subprocess32 (3.2.7)
 
-      $ pip install subprocess32
+      os> pip install subprocess32
 
     pandas (0.20.3)
 
-      $ pip install pandas
+      os> pip install pandas
 
     pandas-datareader (0.4.0)
 
-      $ pip install pandas-datareader
+      os> pip install pandas-datareader
 
     numpy (1.13.3)
     
-      $ pip install numpy
+      os> pip install numpy
     
     scipy (1.0.0)
 
-      $ pip install scipy
+      os> pip install scipy
    
     hashlib (20081119)
 
-      $ pip install hashlib
+      os> pip install hashlib
       
-      **Note:** If you get an error, it is possible that your python version already comes with hashlib by default
+      Note: If you get an error, it is possible that your python version already comes with
+            hashlib by default
       
-      **Note:** Try to run "pip list" and see if hashlib is already installed.
+      Note: Try to run "pip list" and see if hashlib is already installed.
 
     toml (0.9.3)
 
-      $ pip install toml
-</pre>
-</block>
+      os> pip install toml
+ 
       
 
 **2. For NLTK, there are extra downloads required.**
@@ -84,7 +82,7 @@ Note: This is not compatible with Python 3.x
 
 <block>
 <pre>
-$ python ./my_nltk.py
+os> python ./my_nltk.py
 [nltk_data] Downloading collection u'all'
 [nltk_data]    |
 [nltk_data]    | Downloading package abc to
@@ -138,47 +136,47 @@ nltk_data]    | Downloading package mwa_ppdb to
 
 ## Usage:
 
-<block>
-   <pre>
-	To list books (simulating listing book):
 
-		$ python senti_mend.py -l
+To list books (simulating listing book):
 
-		Note: You can derive the &lt;book id> of a book by running  senti_mend.py -l
+	os> python senti_mend.py -l
 
-	To display book information:
+	Note: You can derive the <book id> of a book by running  senti_mend.py -l
 
-		$ python senti_mend.py -i -t "&lt;book title|book id>"
+To display book information:
+
+	os> python senti_mend.py -i -t "<book title|book id>"
         
-    To add book:
+To add book:
 
-        $ python senti_mend.py -a -t "&lt;book title>" -u &lt;Author> -k "&lt;Math|Science|Bed Time>" -n "&lt;Description>"
+    os> python senti_mend.py -a -t "<book title>" -u "<Author>" -k "<Math|Science|Bed Time>" 
+        -n "<Description>"
         
-        where [-k] is book category
+    where [-k] is book category
 
-	To search a book:
+To search a book:
 
-		$ python senti_mend.py -s -t "&lt;book title>"
+	os> python senti_mend.py -s -t "<book title>"
 
-	To check for recommended books based on given title:
+To check for recommended books based on given title:
 
-		$ python senti_mend.py -c -t "&lt;book title|book id>" [-d]
+	os> python senti_mend.py -c -t "<book title|book id>" [-d]
 
-		where [-d] is in debug mode
+    where [-d] is in debug mode
 
-	To rate a book (simulating click-throughs and feedback):
+To rate a book (simulating click-throughs and feedback):
 
-		$ python senti_mend.py -r &lt;rate between 1 and 5> -t "&lt;book title|book id>" -f "&lt;feedback>" -u "&lt;user>"
-    </pre>
- </block>
+	os> python senti_mend.py -r <rate between 1 and 5> -t "<book title|book id>" -f "<feedback>" 
+        -u "<user>"
+
 
 ## Quick Tutorial:
 
 **First**, get a list of available books. To do this, run the following command:
 
-<block>
+
+os> python senti_mend.py -l
 <pre>
-$ python senti_mend.py -l
                                                                                Title          Category
 0                          Trace Numbers, Ages 3 - 5 (Big Skills for Little Hands)                Math
 1                                                                           7 Ate 9               Math
@@ -196,92 +194,100 @@ $ python senti_mend.py -l
 13                     Numbers Workbook: Ages 3-5 (Collins Easy Learning Preschool)               Math
 ...
 </pre>
-</block>
 
 **Second**, get book information.  You can get information of a book by providing the book id or the book title. For example, to get book information using book id 6 for book title 'Sequencing & Memory Workbook', you can issue the following command:
 
-<block>
-<pre>
-$ python senti_mend.py -i -t 6
+
+os> python senti_mend.py -i -t 6
 
 Book Information:
 
-               **Id:** 6
-            **Title:** Sequencing & Memory Workbook
-           **Author:** by Brighter Child (Compiler),
-         **Category:** Math
-      **Description:** Carson-Dellosa Publishing (Compiler) Brighter Child Sequencing & Memory helps young children master thinking skills and concepts. Practice is included for numbers, patterns, classification, critical thinking, and more. School success starts here! Workbooks in the popular Brighter Child series are packed with plenty of fun activities that teach a variety of essential school skills. Students will find help for math, English and grammar, handwriting, and other important subject areas. Each book contains full-color practice pages, easy-to-follow instructions, and an answer key.
+               Id: 6
+            Title: Sequencing & Memory Workbook
+           Author: by Brighter Child (Compiler),
+         Category: Math
+      Description: Carson-Dellosa Publishing (Compiler) Brighter Child Sequencing & Memory 
+      helps young children master thinking skills and concepts. Practice is included for 
+      numbers, patterns, classification, critical thinking, and more. School success starts 
+      here! Workbooks in the popular Brighter Child series are packed with plenty of fun 
+      activities that teach a variety of essential school skills. Students will find help for 
+      math, English and grammar, handwriting, and other important subject areas. Each book 
+      contains full-color practice pages, easy-to-follow instructions, and an answer key.
       
-</pre>
-</block>
+
 
 or you also can use:  
 
-    $ python senti_mend.py -i -t "Sequencing & Memory Workbook"
+   os> python senti_mend.py -i -t "Sequencing & Memory Workbook"
 
 **Third**, try to search for a book title. Use the below command. Below, we are searching for book titles that matches for the **'Seq'** pattern.
 
-<block>
-<pre>
-$ python senti_mend.py -s -t "Seq"
+
+os> python senti_mend.py -s -t "Seq"
 Book Information:
 
-               **Id:** 6
-            **Title:** Sequencing & Memory Workbook
-           **Author:** by Brighter Child (Compiler),
-         **Category:** Math
-      **Description:** Carson-Dellosa Publishing (Compiler) Brighter Child Sequencing & Memory helps young children master thinking skills and concepts. Practice is included for numbers, patterns, classification, critical thinking, and more. School success starts here! Workbooks in the popular Brighter Child series are packed with plenty of fun activities that teach a variety of essential school skills. Students will find help for math, English and grammar, handwriting, and other important subject areas. Each book contains full-color practice pages, easy-to-follow instructions, and an answer key.
-</pre>
-</block>    
+               Id: 6
+            Title: Sequencing & Memory Workbook
+           Author: by Brighter Child (Compiler),
+         Category: Math
+      Description: Carson-Dellosa Publishing (Compiler) Brighter Child Sequencing & 
+      Memory helps young children master thinking skills and concepts. Practice is included 
+      for numbers, patterns, classification, critical thinking, and more. School success 
+      starts here! Workbooks in the popular Brighter Child series are packed with plenty 
+      of fun activities that teach a variety of essential school skills. Students will 
+      find help for math, English and grammar, handwriting, and other important subject 
+      areas. Each book contains full-color practice pages, easy-to-follow instructions, 
+      and an answer key.
+
 
 **Fourth**, check if a book title has already been rated.  If a book is rated, a list of recommended books may also be available.  To get recommendation for all other books, use the following command:
 
 Below is a book that has not been rated yet.
 
-<block>
+os> python senti_mend.py -c -t 6
 <pre>
-$ python senti_mend.py -c -t 6
-
-**===============================================================**
+ ** =============================================================== **
                       RECOMMENDATION
-**===============================================================**
-
+ ** =============================================================== **
+</pre>
 The sparsity level of Book Reviews is 97.8%
 
 Title:  Sequencing & Memory Workbook
 
 Book has not been rated yet ... No relevant titles to recommend
 
-To rate book:  senti_mend.py -r &lt;rate between 1 and 5&gt; -t "&lt;book title|book id&gt;" -f "&lt;feedback&gt;" -u "&lt;user&gt;"
-</pre>
-</block>
+To rate book:  python senti_mend.py -r &lt;rate between 1 and 5&gt; -t "&lt;book title|book id&gt;"
+               -f "&lt;feedback&gt;" -u "&lt;user&gt;"
+
 
 Here is an example of a book with recommendation:
 
-<block>
+
+os> python senti_mend.py -c -t 244
+
 <pre>
-$ python senti_mend.py -c -t 244
-
-**===============================================================**
+ ** =============================================================== **
                       RECOMMENDATION
-**===============================================================**
-
+ ** =============================================================== **
+ 
 The sparsity level of Book Reviews is 97.8%
 
 Title:  Greek Myths for Young Children
 
 **Note:** The following books received positive score and positive feedback from parents
       who also read the book (Greek Myths for Young Children)
-
+ 
 positives  score                                   title
      18.0  1.000          Greek Myths for Young Children
       7.0  1.000                        Beginning Sounds
       2.0  1.000  Sensational Seasons: Reproducible Fall
       7.0  0.875                       Same or Different
-      
-**Note:** Since this is a collaborative-filter (CF) based system, recommendations are based on user feedback and rating. The next commands will show how to rate other books.  Example, If Parent A rates Book A and Book B and parent B is 'checking' for Book A, the system will recommend Book A and Book B.
 </pre>
-</block>
+**Note:** Since this is a collaborative-filter (CF) based system, recommendations are 
+based on user feedback and rating. The next commands will show how to rate other books.  
+Example, If Parent A rates Book A and Book B and parent B is 'checking' for Book A, the 
+system will recommend Book A and Book B.
+
 
 **Fifth**, To rate a book and give a good review, use the following command:
 
@@ -289,7 +295,7 @@ Here is a book that the user has already rated ...
 
 <block>
 <pre>
-$ python senti_mend.py -r 5 -u "raymond5" -t "Greek Myths for Young Children" -f "good book"
+os> python senti_mend.py -r 5 -u "raymond5" -t "Greek Myths for Young Children" -f "good book"
 
 User (d196a91fb80e88) already rated the title (Greek Myths for Young Children)...
 </pre>
@@ -299,7 +305,7 @@ And here is a book that another user has not rated yet ...
 
 <block>
 <pre>
-$ python senti_mend.py -r 5 -u "raymond ordona" -t "Greek Myths for Young Children" -f "good book"
+os> python senti_mend.py -r 5 -u "raymond ordona" -t "Greek Myths for Young Children" -f "good book"
 
 User review recorded:
 
@@ -315,7 +321,7 @@ User review recorded:
 
 <block>
     <pre>
-$ python senti_mend.py -a -t "This is a new  book" -u "IAMAuthor" -n "Everything you want to see"
+os> python senti_mend.py -a -t "This is a new  book" -u "IAMAuthor" -n "Everything you want to see"
 
     New Book Added:
 
@@ -417,7 +423,7 @@ Possible PPT version compatibility:  TESTED ON PPT version 2013 and 2016
 ### Computing for precision, recall, F1
 <block>
 <pre>
-$ python senti_mend.py -e
+os> python senti_mend.py -e
 
 Precision-Recall analysis  ...
 
@@ -436,7 +442,7 @@ E      ----------------------------------
 
 ### Test a comment
 
-$ python senti_mend.py -p "i am not happy"
+os> python senti_mend.py -p "i am not happy"
 
 Evaluating polarity ...
 
