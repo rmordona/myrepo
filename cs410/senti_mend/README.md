@@ -9,9 +9,9 @@ By: Raymond Ordona, Amitesh Shukla, Haibin Huang
 
 <pre>
 Contribution: 
-Raymond Ordona  - Coding, Documentation, Video Narration
-Amitesh Shukla  - Composed Dataset, Design Review and Feedback, Quality Control / Test
-Haibin Huang    - Composed Dataset, Dataset Cleanup, Quality Control / Test
+Raymond Ordona  - Coding, Documentation, Video Narration, Tech Review
+Amitesh Shukla  - Composed Dataset, Design Review and Feedback, Quality Control / Test, Tech Review
+Haibin Huang    - Composed Dataset, Dataset Cleanup, Quality Control / Test, Tech Review
 </pre>
 
 ## Installation:
