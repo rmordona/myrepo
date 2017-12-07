@@ -151,6 +151,12 @@ def sentiment_score(pos_senti, neg_senti, term):
         if term.neg_score() > 0:
             neg_senti.append(term.neg_score())
             
+# If using swn sentiment, this function computes for weights based on scores 
+# provided by sentiworldnet lexicon.  The sentiworldnet lexicon has an annotated
+# scores for a given word and depending on the context, it may receive scores different
+# from other context; however, the overall sum of the scores will equal to 1.
+# We chose to collect all context [ scope between 1 through 7 ] and add the combined pos, neg, neutral values
+# they become the polarity weights. In other words, intensity is normalized
 def sentiment_weight(tokens_pos):
     pos_senti = []
     neg_senti = []
@@ -201,6 +207,8 @@ def sentiment_weight(tokens_pos):
     negative = 0
     pos_sum = np.sum(pos_senti)
     neg_sum = np.sum(neg_senti) 
+    
+    # normalizing intensity of polarity
     if  np.isnan(pos_sum) == False and np.isnan(neg_sum) == False and pos_sum + neg_sum > 0:
         positive = pos_sum / (pos_sum + neg_sum )
         negative = neg_sum / (pos_sum + neg_sum )
@@ -263,6 +271,8 @@ def sentiment_swn(doc):
       logging.debug("Error in sentiment ...")
     return weight
 
+# Unlike swn, Vader is a sentiment utility that computes scores automatically. 
+# So all you need to do is just get the score.
 def sentiment_vader(doc):
 
     senti_intense = SentimentIntensityAnalyzer()
@@ -282,11 +292,10 @@ def sentimentize(doc):
        return sentiment_vader( doc )
 
 
+# Try to normalize the polarity to scale to rating between 1 to N ( in the case or rating,
+# it's between 1 to 5 )
 def normalize_to_rating(value, max):
     return np.round( value * max )
-
-def normalize_to_1(value,min,max):
-    return (value - min ) / ( max - min )
 
 def average(rate, senti):
     if np.isnan(senti) == True or senti == 0:
@@ -295,6 +304,8 @@ def average(rate, senti):
         senti_rate = normalize_to_rating(senti, 5)
         return np.average([rate, senti_rate])
 
+# This function ranks the recommended titles based on scores first.
+# And if scores are the same, use the polarity ( positive polarity count) to break the tie
 def rank_titles(other_titles, tit_indexes):
     rank = []
     score = 0.5
@@ -333,22 +344,27 @@ def recommend_books(title, matrix):
       exit(0)
     
     # convert to sparse matrix to remove zeroes
+    # notice we are using csr_matrix ( not csc_matrix )
     sparse_reviewers = sparse.csr_matrix(reviewers)
     
     # get other reviewers who have seen the same titles
+    # who are the other parents who also rated the book?
     other_reviewers = matrix.iloc[sparse_reviewers.indices]
 
-    # get related titles, including title input
+    # since matrix covers both titles and other reviews, 
+    # let's optimze the matrix first then transpose to get the related title after
+    # notice we are using csc_matrix
     related_titles = sparse.csc_matrix(other_reviewers)
 
-    # convert to sparse matrix, transpose so titles become rows
+    # Now, transpose so titles become rows
     sparse_related_titles = sparse.csc_matrix(related_titles.todense().T)
 
     # get row indexes of titles, eliminate duplicates
     column_index = sparse_related_titles.indices
     tit_indexes = dict.fromkeys(column_index).keys()
 
-    # get other titles
+    # get related titles, including title input
+    # which books have the parents rated? 
     other_titles = matrix.T.iloc[tit_indexes] 
 
     # readjust index
@@ -399,7 +415,7 @@ def recommend(title):
     else:
         logging.warning("No Title specified ...")
 
-def rate(user,title,rate,feedback):
+def rate_book(user,title,rate,feedback):
 
     mytitle = get_title(title)
 
@@ -745,7 +761,7 @@ def main(argv):
         if len(USER) < 2 or len(FEEDBACK) < 5:
 	   usage()
            exit(1)
-  	rate(USER,TITLE,RATE,FEEDBACK)
+  	rate_book(USER,TITLE,RATE,FEEDBACK)
     elif EVALUATE == 1:
   	  evaluate_all()
     elif len(COMMENT) > 0:
