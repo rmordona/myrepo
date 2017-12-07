@@ -7,6 +7,13 @@ This is a collaborative-filter (CF) based recommendation system.
 
 By: Raymond Ordona, Amitesh Shukla, Haibin Huang
 
+<pre>
+Contribution: 
+Raymond Ordona  - Coding, Documentation, Video Narration
+Amitesh Shukla  - Composed Dataset, Design Review and Feedback, Quality Control / Test
+Haibin Huang    - Composed Dataset, Dataset Cleanup, Quality Control / Test
+</pre>
+
 ## Installation:
 
 Senti_Mend requires python installation - if possible - on linux environment; although, it should work on other environments (mac, windows) given proper installation.
