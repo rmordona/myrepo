@@ -419,7 +419,7 @@ def rate_book(user,title,rate,feedback):
 
     mytitle = get_title(title)
 
-    titles = (title for title in book_df.Title.unique())
+    titles = (title.strip() for title in book_df.Title.unique())
 
     if mytitle in titles:
 
@@ -498,12 +498,9 @@ def add_book(title,author,category,description):
 def info_book(title):
 
     mytitle = get_title(title)
-
-    titles = (title for title in book_df.Title.unique())
-
-    if mytitle in titles:
-
-      book_info = book_df.loc[book_df['Title'] == mytitle ]
+    titles = (title.lower().strip() for title in book_df.Title.unique())
+    if mytitle.lower() in titles:
+      book_info = book_df.loc[book_df['Title'].str.lower().str.strip() == mytitle.lower() ]
       print ""
       print "Book Information:", mytitle
       print ""
@@ -513,7 +510,6 @@ def info_book(title):
       print "         Category: {}".format(book_info['Category'].iloc[0])
       print "      Description: {}".format(book_info['Description'].iloc[0])
       print ""
-
     else:
       print ""
       print "No title exists in our list ... Title is case sensitive"
@@ -759,7 +755,9 @@ def main(argv):
   	add_book(TITLE,AUTHOR,CATEGORY,DESCRIPTION)
     elif RATE > 0:
         if len(USER) < 2 or len(FEEDBACK) < 5:
-	   usage()
+           print ""
+           print "User cannot be less than 2 in length. The Feedback cannot be less than 5 in length"
+           print ""
            exit(1)
   	rate_book(USER,TITLE,RATE,FEEDBACK)
     elif EVALUATE == 1:
