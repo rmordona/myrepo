@@ -101,7 +101,7 @@ def get_title(title):
 
     mytitle = ""
     if IsNan(title) == True:
-      mytitle = title.strip()
+      mytitle = title
     else:
       try:
         title_row = book_df.loc[int(title)]
@@ -113,7 +113,7 @@ def get_title(title):
          print "Please use the following command to get list of titles: ", basename, "-l"
          print ""
          exit(1)
-    return mytitle
+    return mytitle.strip()
 
 def Hash(user):
     hash = hashlib.sha1(user).hexdigest()
