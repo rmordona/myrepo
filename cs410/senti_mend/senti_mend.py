@@ -101,7 +101,7 @@ def get_title(title):
 
     mytitle = ""
     if IsNan(title) == True:
-      mytitle = title
+      mytitle = title.strip()
     else:
       try:
         title_row = book_df.loc[int(title)]
@@ -495,15 +495,15 @@ def add_book(title,author,category,description):
              myfile.write(book + "\n")
 
 
-def info(title):
+def info_book(title):
 
     mytitle = get_title(title)
 
     titles = (title for title in book_df.Title.unique())
 
-    if mytitle.strip() in titles:
+    if mytitle in titles:
 
-      book_info = book_df.loc[book_df['Title'] == mytitle.strip() ]
+      book_info = book_df.loc[book_df['Title'] == mytitle ]
       print ""
       print "Book Information:", mytitle
       print ""
@@ -526,7 +526,7 @@ def search(keyword):
 
     # If keyword provided is an ID, look up for book id instead
     if IsNan(keyword) == False:
-       info(keyword)
+       info_book(keyword)
        exit(0)
 
     if len(keyword) == 0:
@@ -750,7 +750,7 @@ def main(argv):
     if LIST == 1:
   	list()
     elif INFO == 1:
-  	info(TITLE)
+  	info_book(TITLE)
     elif SEARCH == 1:
   	search(TITLE)
     elif RECOMMEND == 1:
